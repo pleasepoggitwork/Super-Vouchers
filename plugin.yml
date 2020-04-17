@@ -6,6 +6,6 @@ main: xSuper\Main
 permissions:
     rankv.command.use:
         defualt: op
-        description: "Ability to use RankV"
+        description: "Ability to use all rankv commands"
        
     
