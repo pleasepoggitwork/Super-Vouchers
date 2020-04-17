@@ -1,7 +1,7 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/VoltageMC/Super-Vouchers
 build-by-default: true
 branches:
-- master
+- maste
 projects:
   Super-Vouchers:
     path: ""
