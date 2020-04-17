@@ -59,7 +59,7 @@ class NickVCommand extends BaseCommand
                     $sender->sendMessage("Sorry, " . $args["player"] . " is not online!");
                 }
             } else {
-                $sender->sendMessage("Usage: /fixv <player>");
+                $sender->sendMessage("Usage: /nickv <player>");
             }
         } else {
             $sender->sendMessage("You don't have permission to use this command.");

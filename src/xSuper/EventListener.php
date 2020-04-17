@@ -109,6 +109,94 @@ class EventListener implements Listener
                 $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/fix all " . TextFormat::GRAY . "command!");
             }
         }
+        if ($item->getNamedTag()->hasTag("colorchatv")) {
+            if ($player->hasPermission("essentials.colorchat")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to " . TextFormat::AQUA . "color chat!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.colorchat");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to " . TextFormat::AQUA . "color chat!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("antiafkv")) {
+            if ($player->hasPermission("essentials.afk.preventauto")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to " . TextFormat::AQUA . "Anti Afk!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.afk.preventauto");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to " . TextFormat::AQUA . "Anti Afk!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("backv")) {
+            if ($player->hasPermission("essentials.back.ondeath")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/back" . TextFormat::GRAY . " command!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.afk.preventauto");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/back" . TextFormat::GRAY . " command!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("suicidev")) {
+            if ($player->hasPermission("essentials.suicide")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/suicide" . TextFormat::GRAY . " command!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.suicide");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/suicide" . TextFormat::GRAY . " command!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("nearv")) {
+            if ($player->hasPermission("essentials.near.use")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/near" . TextFormat::GRAY . " command!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.near.use");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/near" . TextFormat::GRAY . " command!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("condensev")) {
+            if ($player->hasPermission("essentials.condense")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/condense" . TextFormat::GRAY . " command!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.condense");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/condense" . TextFormat::GRAY . " command!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("compassv")) {
+            if ($player->hasPermission("essentials.compass")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/compass" . TextFormat::GRAY . " command!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.compass");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/compass" . TextFormat::GRAY . " command!");
+            }
+        }
+        if ($item->getNamedTag()->hasTag("clearinvv")) {
+            if ($player->hasPermission("essentials.clearinventory.use")) {
+                $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/clear" . TextFormat::GRAY . " command!");
+            } else {
+                $usrdmg = $pureperms->getUserDataMgr();
+                $usrdmg->setPermission($player, "essentials.clearinventory.use");
+                $inventory = $player->getInventory();
+                $inventory->removeItem($inventory->getItemInHand()->pop());
+                $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/clear" . TextFormat::GRAY . " command!");
+            }
+        }
     }
 }
 

@@ -14,7 +14,7 @@ use CortexPE\Commando\args\RawStringArgument;
 use pocketmine\Server;
 
 
-class FlyVCommand extends BaseCommand
+class BackVCommand extends BaseCommand
 {
     /** @var RankV */
     private $plugin;
@@ -40,16 +40,16 @@ class FlyVCommand extends BaseCommand
                 $target = \pocketmine\Server::getInstance()->getPlayer($player);
                 if ($target instanceof Player) {
                     $item = Item::get(Item::PAPER);
-                    $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Fly Command" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
+                    $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Back Command" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
                     $lore = [
                         TextFormat::GRAY . "Right-Click to redeem this command voucher",
-                        TextFormat::GRAY . "and gain access to the " . TextFormat::AQUA . "fly command!",
+                        TextFormat::GRAY . "and gain access to the " . TextFormat::AQUA . "back command!",
                         TextFormat::GRAY . " ",
                         TextFormat::BOLD . TextFormat::RED . "Warning" . TextFormat::RESET . TextFormat::GRAY . ": This voucher can only be used once",
                         TextFormat::GRAY . " and is not refundable if lost!"
                     ];
                     $item->setLore($lore);
-                    $item->getNamedTag()->setInt("flyv", 1);
+                    $item->getNamedTag()->setInt("backv", 1);
                     $inventory = $target->getInventory();
                     if ($inventory->canAddItem($item)) {
                         $inventory->addItem($item);
@@ -59,7 +59,7 @@ class FlyVCommand extends BaseCommand
                     $sender->sendMessage("Sorry, " . $args["player"] . " is not online!");
                 }
             } else {
-                $sender->sendMessage("Usage: /flyv <player>");
+                $sender->sendMessage("Usage: /backv <player>");
             }
         } else {
             $sender->sendMessage("You don't have permission to use this command.");
