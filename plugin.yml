@@ -1,0 +1,11 @@
+name: RankV
+author: xSuper
+api: 3.0.0
+version: 1.0.0
+main: xSuper\Main
+permissions:
+    rankv.command.use:
+        defualt: op
+        description: "Ability to use RankV"
+       
+    
