@@ -16,7 +16,7 @@ use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
 
 
-class FeedVCommand extends BaseCommand
+class KitKronosV extends BaseCommand
 {
     /** @var RankV */
     private $plugin;
@@ -41,19 +41,16 @@ class FeedVCommand extends BaseCommand
                 $player = $args["player"];
                 $target = \pocketmine\Server::getInstance()->getPlayer($player);
                 if ($target instanceof Player) {
-                    $item = Item::get(Item::BLAZE_POWDER);
-                    $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Feed Command" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
+                    $item = Item::get(Item::PAINTING);
+                    $item->setCustomName(TextFormat::BOLD . TextFormat::LIGHT_PURPLE . "Kronos Kit" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
                     $lore = [
-                        TextFormat::GRAY . "Right-Click to redeem this command voucher",
-                        TextFormat::GRAY . "and gain access to the " . TextFormat::AQUA . "feed command!",
-                        TextFormat::GRAY . " ",
-                        TextFormat::BOLD . TextFormat::RED . "Warning" . TextFormat::RESET . TextFormat::GRAY . ": This voucher can only be used once",
-                        TextFormat::GRAY . "and is not refundable if lost!"
+                        TextFormat::GRAY . "Right-Click to redeem the " . TextFormat::AQUA . "kronos kit" . TextFormat::GRAY . ",",
+                        TextFormat::GRAY . "and gain all the kit's items!"
                     ];
                     $item->setLore($lore);
-                    $item->getNamedTag()->setInt("feedv", 1);
-                    $inventory = $target->getInventory();
+                    $item->getNamedTag()->setInt("kronosv", 1);
                     $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
+                    $inventory = $target->getInventory();
                     if ($inventory->canAddItem($item)) {
                         $inventory->addItem($item);
                         return;
@@ -62,7 +59,7 @@ class FeedVCommand extends BaseCommand
                     $sender->sendMessage("Sorry, " . $args["player"] . " is not online!");
                 }
             } else {
-                $sender->sendMessage("Usage: /feedv <player>");
+                $sender->sendMessage("Usage: /kronosv <player>");
             }
         } else {
             $sender->sendMessage("You don't have permission to use this command.");

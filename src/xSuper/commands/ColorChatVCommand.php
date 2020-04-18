@@ -12,6 +12,8 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 use CortexPE\Commando\args\RawStringArgument;
 use pocketmine\Server;
+use pocketmine\nbt\tag\ListTag;
+use pocketmine\nbt\tag\StringTag;
 
 
 class ColorChatVCommand extends BaseCommand
@@ -39,17 +41,18 @@ class ColorChatVCommand extends BaseCommand
                 $player = $args["player"];
                 $target = \pocketmine\Server::getInstance()->getPlayer($player);
                 if ($target instanceof Player) {
-                    $item = Item::get(Item::PAPER);
-                    $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Color Chat" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
+                    $item = Item::get(Item::FEATHER);
+                    $item->setCustomName(TextFormat::BOLD . TextFormat::GREEN . "Color Chat" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
                     $lore = [
-                        TextFormat::GRAY . "Right-Click to redeem this command voucher",
+                        TextFormat::GRAY . "Right-Click to redeem this perk voucher",
                         TextFormat::GRAY . "and gain access to " . TextFormat::AQUA . "color your chat!",
                         TextFormat::GRAY . " ",
                         TextFormat::BOLD . TextFormat::RED . "Warning" . TextFormat::RESET . TextFormat::GRAY . ": This voucher can only be used once",
-                        TextFormat::GRAY . " and is not refundable if lost!"
+                        TextFormat::GRAY . "and is not refundable if lost!"
                     ];
                     $item->setLore($lore);
                     $item->getNamedTag()->setInt("colorchatv", 1);
+                    $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
                     $inventory = $target->getInventory();
                     if ($inventory->canAddItem($item)) {
                         $inventory->addItem($item);

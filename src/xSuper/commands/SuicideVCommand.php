@@ -12,6 +12,8 @@ use pocketmine\Player;
 use pocketmine\utils\TextFormat;
 use CortexPE\Commando\args\RawStringArgument;
 use pocketmine\Server;
+use pocketmine\nbt\tag\ListTag;
+use pocketmine\nbt\tag\StringTag;
 
 
 class SuicideVCommand extends BaseCommand
@@ -39,7 +41,7 @@ class SuicideVCommand extends BaseCommand
                 $player = $args["player"];
                 $target = \pocketmine\Server::getInstance()->getPlayer($player);
                 if ($target instanceof Player) {
-                    $item = Item::get(Item::PAPER);
+                    $item = Item::get(Item::BLAZE_POWDER);
                     $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Suicide Command" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
                     $lore = [
                         TextFormat::GRAY . "Right-Click to redeem this command voucher",
@@ -50,6 +52,7 @@ class SuicideVCommand extends BaseCommand
                     ];
                     $item->setLore($lore);
                     $item->getNamedTag()->setInt("suicidev", 1);
+                    $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
                     $inventory = $target->getInventory();
                     if ($inventory->canAddItem($item)) {
                         $inventory->addItem($item);
