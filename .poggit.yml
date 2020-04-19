@@ -5,6 +5,9 @@ branches:
 projects:
   Super-Vouchers:
     path: ""
+    libs:
+      - src: CortexPE/Commando/Commando
+        version: ^0.6
     lint:
       phpstan: false
 ...
