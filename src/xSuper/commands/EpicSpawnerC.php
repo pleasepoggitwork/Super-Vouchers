@@ -16,7 +16,7 @@ use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
 
 
-class FixVCommand extends BaseCommand
+class EpicSpawnerC extends BaseCommand
 {
     /** @var RankV */
     private $plugin;
@@ -41,20 +41,24 @@ class FixVCommand extends BaseCommand
                 $player = $args["player"];
                 $target = \pocketmine\Server::getInstance()->getPlayer($player);
                 if ($target instanceof Player) {
-                    $item = Item::get(Item::BLAZE_POWDER);
-                    $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Fix Command" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
+                    $item = Item::get(Item::CHEST);
+                    $item->setCustomName(TextFormat::BOLD . TextFormat::GREEN . "Epic Spawner" . TextFormat::BOLD . TextFormat::WHITE . " Crate");
                     $lore = [
-                        TextFormat::GRAY . "Right-Click to redeem this command voucher",
-                        TextFormat::GRAY . "and gain access to the " . TextFormat::AQUA . "fix command!",
-                        TextFormat::GRAY . " ",
-                        TextFormat::BOLD . TextFormat::RED . "Warning" . TextFormat::RESET . TextFormat::GRAY . ": This voucher can only be used once",
-                        TextFormat::GRAY . "and is not refundable if lost!"
+                        TextFormat::GRAY . "Right-Click to open this crate to",
+                        TextFormat::GRAY . "get its rewards!",
+                        " ",
+                        TextFormat::BOLD . TextFormat::AQUA . "Rewards:",
+                        TextFormat::RESET .TextFormat::WHITE . "* 25x Vindicator Spawner",
+                        TextFormat::WHITE . "* 25x Zombie Pigman Spawner",
+                        TextFormat::WHITE . "* 25x Iron Golem Spawner",
+                        " ",
+                        TextFormat::BOLD . TextFormat::RED . "Warning" . TextFormat::RESET . TextFormat::GRAY . ": Please make sure you have",
+                        TextFormat::GRAY . "at least " . TextFormat::AQUA . "3 " . TextFormat::GRAY . "inventory slots open!"
                     ];
                     $item->setLore($lore);
-                    $item->getNamedTag()->setInt("fixv", 1);
-                    $item->getNamedTag()->setInt("valid", 1);
-                    $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
+                    $item->getNamedTag()->setInt("epics", 1);
                     $inventory = $target->getInventory();
+                    $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
                     if ($inventory->canAddItem($item)) {
                         $inventory->addItem($item);
                         return;
@@ -63,10 +67,12 @@ class FixVCommand extends BaseCommand
                     $sender->sendMessage("Sorry, " . $args["player"] . " is not online!");
                 }
             } else {
-                $sender->sendMessage("Usage: /fixv <player>");
+                $sender->sendMessage("Usage: /epicsc <player>");
             }
         } else {
             $sender->sendMessage("You don't have permission to use this command.");
         }
     }
 }
+
+

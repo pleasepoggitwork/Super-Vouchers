@@ -16,7 +16,7 @@ use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
 
 
-class FixVCommand extends BaseCommand
+class ZeusRank extends BaseCommand
 {
     /** @var RankV */
     private $plugin;
@@ -41,20 +41,19 @@ class FixVCommand extends BaseCommand
                 $player = $args["player"];
                 $target = \pocketmine\Server::getInstance()->getPlayer($player);
                 if ($target instanceof Player) {
-                    $item = Item::get(Item::BLAZE_POWDER);
-                    $item->setCustomName(TextFormat::BOLD . TextFormat::YELLOW . "Fix Command" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
+                    $item = Item::get(Item::PAPER);
+                    $item->setCustomName(TextFormat::BOLD . TextFormat::AQUA . "Zeus Rank" . TextFormat::BOLD . TextFormat::WHITE . " Voucher");
                     $lore = [
-                        TextFormat::GRAY . "Right-Click to redeem this command voucher",
-                        TextFormat::GRAY . "and gain access to the " . TextFormat::AQUA . "fix command!",
+                        TextFormat::GRAY . "Right-Click to redeem this rank voucher",
+                        TextFormat::GRAY . "to get the " . TextFormat::AQUA . "Zeus " . TextFormat::GRAY . "rank, with all of its perks!",
                         TextFormat::GRAY . " ",
                         TextFormat::BOLD . TextFormat::RED . "Warning" . TextFormat::RESET . TextFormat::GRAY . ": This voucher can only be used once",
                         TextFormat::GRAY . "and is not refundable if lost!"
                     ];
                     $item->setLore($lore);
-                    $item->getNamedTag()->setInt("fixv", 1);
-                    $item->getNamedTag()->setInt("valid", 1);
-                    $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
+                    $item->getNamedTag()->setInt("Zeus", 1);
                     $inventory = $target->getInventory();
+                    $item->setNamedTagEntry(new ListTag(Item::TAG_ENCH));
                     if ($inventory->canAddItem($item)) {
                         $inventory->addItem($item);
                         return;
@@ -63,7 +62,7 @@ class FixVCommand extends BaseCommand
                     $sender->sendMessage("Sorry, " . $args["player"] . " is not online!");
                 }
             } else {
-                $sender->sendMessage("Usage: /fixv <player>");
+                $sender->sendMessage("Usage: /zeusrv <player>");
             }
         } else {
             $sender->sendMessage("You don't have permission to use this command.");
