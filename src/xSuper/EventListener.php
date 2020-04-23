@@ -47,9 +47,10 @@ class EventListener implements Listener
             }
             if ($item->getNamedTag()->hasTag("feedv")) {
                 $event->setCancelled();
-                if ($player->hasPermission("essentials.feed.use")) {
+                if ($player->hasPermission("essentials.feed")) {
                     $player->sendMessage(TextFormat::GRAY . "You already have access to the " . TextFormat::AQUA . "/feed " . TextFormat::GRAY . "command!");
                 } else {
+                    $usrdmg->setPermission($player, "essentials.feed");
                     $inventory->removeItem($inventory->getItemInHand()->pop());
                     $player->sendMessage(TextFormat::GRAY . "You have successfully redeemed access to the " . TextFormat::AQUA . "/feed " . TextFormat::GRAY . "command!");
                 }
